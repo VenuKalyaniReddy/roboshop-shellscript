@@ -43,14 +43,33 @@ VALIDATE $? "Enabling the nodejs:18"
 dnf install nodejs -y &>>$LOGFILE
 VALIDATE $? "Installing nodejs"
 
-ID roboshop
+id roboshop #if roboshop user does not exist, then it is failure
 
 if [ $? -ne 0 ]
 then 
-useradd roboshop
-VALIDATE $? "roboshop user creation"
+    useradd roboshop
+    VALIDATE $? "roboshop user creation"
 else
-echo -e "roboshop user already exist $Y SKIPPING $N" &>>$LOGFILE
+    echo -e "roboshop user already exist $Y SKIPPING $N" &>>$LOGFILE
 fi
+
+mkdir -p /app #-p means when ever you execute if directory is not abvailable i will create , other wise not
+
+VALIDATE $? "creating app directory "
+
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+
+VALIDATE $? "download catalouge application"
+
+cd /app
+
+unzip /tmp/catalogue.zip
+
+VALIDATE $? "Unzip the catalouge application"
+
+#installing depedencies
+npm install 
+
+VALIDATE $? "Installling npm dependencies"
 
 
