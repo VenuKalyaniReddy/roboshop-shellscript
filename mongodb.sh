@@ -37,7 +37,7 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 
 VALIDATE $? "Copied Mongodb repo"
 
-yum install mongodb-org -y  &>>$LOGFILE
+yum install mongodb-org -y &>>$LOGFILE
 
 VALIDATE $? "Installing Mongodb"
 
@@ -45,7 +45,7 @@ systemctl start mongod &>>$LOGFILE
 
 VALIDATE $? "Enabling Mongodb"
 
-systemctl start mongod &>>$LOGFILE
+systemctl start mongodb &>>$LOGFILE
 
 VALIDATE $? Starting MongoDb 
 
