@@ -53,22 +53,22 @@ else
     echo -e "roboshop user already exist $Y SKIPPING $N" &>>$LOGFILE
 fi
 
-mkdir -p /app #-p means when ever you execute if directory is not abvailable i will create , other wise not
+mkdir -p /app &>> $LOGFILE #-p means when ever you execute if directory is not abvailable i will create , other wise not
 
 VALIDATE $? "creating app directory "
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 
 VALIDATE $? "download catalouge application"
 
-cd /app
+cd /app 
 
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip &>> $LOGFILE
 
 VALIDATE $? "Unzip the catalouge application"
 
 #installing depedencies
-npm install 
+npm install &>> $LOGFILE
 
 VALIDATE $? "Installling npm dependencies"
 
