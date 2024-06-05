@@ -80,19 +80,19 @@ then
     echo -e "$R ERROR::Please run this script with root access $N"
     exit 1
 else
-    echo "You are the root user." &>>$LOGFILE
+    echo "You are the root user." &>> $LOGFILE
 fi
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copied Mongodb repo"
 
-yum install mongodb-org -y &>>$LOGFILE
+yum install mongodb-org -y &>> $LOGFILE
 VALIDATE $? "Installing Mongodb"
 
-systemctl start mongod &>>$LOGFILE
+systemctl start mongod &>> $LOGFILE
 VALIDATE $? "Starting MongoDB"
 
-systemctl enable mongod &>>$LOGFILE
+systemctl enable mongod &>> $LOGFILE
 VALIDATE $? "Enabling MongoDB"
 
 #echo -e "$G MongoDB installation completed successfully $N" &>>$LOGFILE
