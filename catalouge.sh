@@ -51,5 +51,6 @@ useradd roboshop
 VALIDATE $? "roboshop user creation"
 else
 echo -e "roboshop user already exist $Y SKIPPING $N" &>>$LOGFILE
+fi
 
 
