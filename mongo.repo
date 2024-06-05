@@ -1,16 +1,10 @@
-# sudo tee /etc/yum.repos.d/mongodb.repo <<EOF
-# [mongodb-org-4.2]
-# name=MongoDB Repository
-# baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/4.2/x86_64/
-# gpgcheck=1
-# enabled=1
-# gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
-# EOF
-
-
 [mongodb-org-4.2]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
 gpgcheck=0
 enabled=1
+
+#if you are running in centos-08 mongo db package we need to exetute this commands in centos server
+#sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+#sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
