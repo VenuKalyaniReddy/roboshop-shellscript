@@ -23,6 +23,8 @@ else
 
 fi
 
+}
+
 if [ $? -ne 0 ]
 
 then
@@ -32,8 +34,6 @@ then
 else
     echo "you are root user"
 fi
-
-}
 
 dnf module disable nodejs -y &>>$LOGFILE
 VALIDATE $? "Disabling current NODEJS"
