@@ -56,13 +56,13 @@ mkdir -p /app &>> $LOGFILE #-p means when ever you execute if directory is not a
 
 VALIDATE $? "creating app directory "
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE   ## o means we are running so many time scrpt if is not exectued it will executed other wise it showing success
 
 VALIDATE $? "download catalouge application"
 
 cd /app 
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE  ## o means we are running so many time scrpt if is not exectued it will executed other wise it showing success
 
 VALIDATE $? "Unzip the catalouge application"
 
