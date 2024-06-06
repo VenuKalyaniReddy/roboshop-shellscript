@@ -90,6 +90,7 @@ cp /home/centos/roboshop-shellscript/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "copying mongodb repo"
 
 dnf install mongodb-org-shell -y
-VALIDATE $? "install mongodb-client"
+VALIDATE $? "Install mongodb-client"
 
 mongo --host MONGODB_HOST </app/schema/catalogue.js
+VALIDATE $? "Loading catalouge data into mongodb"
