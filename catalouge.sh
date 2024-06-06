@@ -72,7 +72,9 @@ npm install &>> $LOGFILE
 VALIDATE $? "Installling npm dependencies"
 
 #use absolute path because catalouge.service exist there
+
 cp /home/centos/roboshop-shellscript/catalouge.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+
 VALIDATE $? "Copying catalouge.service file"
  
 systemctl daemon-reload &>> $LOGFILE
