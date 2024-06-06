@@ -6,6 +6,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+MONGODB_HOST=mongodb.aidevops.website
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="\tmp\ $0-$TIMESTAMP.log"
@@ -83,3 +84,12 @@ VALIDATE $? "enable the catalouge"
 systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "start the catalouge"
 
+#copying monodb.repo file 
+
+cp /home/centos/roboshop-shellscript/mongo.repo /etc/yum.repos.d/mongo.repo
+VALIDATE $? "copying mongodb repo"
+
+dnf install mongodb-org-shell -y
+VALIDATE $? "install mongodb-client"
+
+mongo --host MONGODB_HOST </app/schema/catalogue.js
