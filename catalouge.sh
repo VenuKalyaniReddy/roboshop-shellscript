@@ -72,7 +72,7 @@ npm install &>> $LOGFILE
 VALIDATE $? "Installling npm dependencies"
 
 #use absolute path because catalouge.service exist there
-cp /home/centos/roboshop-shellscript/catalouge.service /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop-shellscript/catalouge.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 VALIDATE $? "Copying catalouge.service file"
  
 systemctl daemon-reload &>> $LOGFILE
@@ -86,11 +86,11 @@ VALIDATE $? "start the catalouge"
 
 #copying monodb.repo file 
 
-cp /home/centos/roboshop-shellscript/mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/centos/roboshop-shellscript/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "copying mongodb repo"
 
-dnf install mongodb-org-shell -y
+dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "Install mongodb-client"
 
-mongo --host MONGODB_HOST </app/schema/catalogue.js
+mongo --host MONGODB_HOST </app/schema/catalogue.js &>> $LOGFILE
 VALIDATE $? "Loading catalouge data into mongodb"
