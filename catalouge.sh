@@ -73,7 +73,7 @@ VALIDATE $? "Installling npm dependencies"
 
 #use absolute path because catalouge.service exist there
 
-cp /home/centos/roboshop-shellscript/catalouge.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+cp /home/centos/roboshop-shellscript/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 
 VALIDATE $? "Copying catalouge.service file"
  
