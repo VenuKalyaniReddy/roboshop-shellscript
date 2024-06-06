@@ -14,8 +14,8 @@ echo "script started exectuing at $TIMESTAMP" &>>$LOGFILE
 
 VALIDATE () {
 
-if [ $1- ne 0 ]; then
-
+if [ $1 -ne 0 ]
+then
     echo -e "$2...$R FAILED $N"
     exit 1
 else
