@@ -43,7 +43,7 @@ VALIDATE $? "Installing nodejs"
 
 id roboshop
 
-if [$? -ne 0 ]
+if [ $? -ne 0 ]
 then 
     useradd roboshop $LOGFILE
     VALIDATE $? "roboshop user added"
@@ -54,17 +54,17 @@ fi
 mkdir -p /app
 VALIDATE $? "app directory created"
 
-curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
+curl  -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
 VALIDATE $? "download user application"
 
 cd /app 
-unzip /tmp/user.zip &>> $LOGFILE
+unzip -o /tmp/user.zip &>> $LOGFILE
 VALIDATE $? "unzip the user application"
 
 npm install &>> $LOGFILE
 VALIDATE $? "install dependencies"
 
-cp /home/roboshop-shellscript/user.service /etc/systemd/system/user.service &>> $LOGFILE
+cp /home/centos/roboshop-shellscript/user.service /etc/systemd/system/user.service &>> $LOGFILE
 VALIDATE $? "copying the user.service file"
 
 systemctl daemon-reload &>> $LOGFILE
