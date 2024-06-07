@@ -36,8 +36,10 @@ fi
 
 dnf module disable nodejs -y $LOGFILE
 VALIDATE $? "disable the current nodejs"
+
 dnf module enable nodejs:18 -y $LOGFILE
 VALIDATE  $? "enable nodejs18"
+
 dnf install nodejs -y  $LOGFILE
 VALIDATE $? "Installing nodejs"
 
@@ -54,33 +56,33 @@ fi
 mkdir -p /app
 VALIDATE $? "app directory created"
 
-curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip
+curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
 VALIDATE $? "download user application"
 
 cd /app 
-unzip /tmp/user.zip
+unzip /tmp/user.zip &>> $LOGFILE
 VALIDATE $? "unzip the user application"
 
-npm install 
+npm install &>> $LOGFILE
 VALIDATE $? "install dependencies"
 
-cp /home/roboshop-shellscript/user.service /etc/systemd/system/user.service
+cp /home/roboshop-shellscript/user.service /etc/systemd/system/user.service &>> $LOGFILE
 VALIDATE $? "copying the user.service file"
 
-systemctl daemon-reload
+systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "reload daemon"
 
-systemctl enable user 
+systemctl enable user  &>> $LOGFILE
 VALIDATE $? "enable the user"
 
-systemctl start user
+systemctl start user &>> $LOGFILE
 VALIDATE $? "start the user"
 
-cp /home/roboshop-shellscript/mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/roboshop-shellscript/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "copying the mongodb repo"
 
-dnf install mongodb-org-shell -y
+dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "Instal mongodb client"
 
-mongo --host $MONGODB_HOST  </app/schema/user.js
+mongo --host $MONGODB_HOST  </app/schema/user.js &>> $LOGFILE
 VALIDATE $? "loading the schema"
