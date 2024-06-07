@@ -17,7 +17,7 @@ then
     echo -e "$2......$R FAILE $N"
     exit 1
 else
-    echo "$2.......$G SUCESS $N"
+    echo -e "$2.......$G SUCESS $N"
 fi
 }
 
@@ -45,5 +45,5 @@ systemctl enable redis &>> $LOGFILE
 VALIDATE $? "Enable Redis"
 
 systemctl start redis &>> $LOGFILE
-VALIDATE$? "Start Redis"
+VALIDATE $? "Start Redis"
 
