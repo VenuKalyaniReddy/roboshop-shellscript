@@ -34,16 +34,14 @@ else
     echo "You are root user"
 fi
 
-dnf module disable nodejs -y $LOGFILE
-VALIDATE $? "disable the current nodejs"
-
-dnf module enable nodejs:18 -y $LOGFILE
-VALIDATE  $? "enable nodejs18"
-
-dnf install nodejs -y  $LOGFILE
+dnf module disable nodejs -y &>>$LOGFILE
+VALIDATE $? "Disabling current NODEJS"
+dnf module enable nodejs:18 -y &>>$LOGFILE
+VALIDATE $? "Enabling the nodejs:18"
+dnf install nodejs -y &>>$LOGFILE
 VALIDATE $? "Installing nodejs"
 
-id =roboshop
+id roboshop
 
 if [$? -ne 0 ]
 then 
