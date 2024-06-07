@@ -45,10 +45,10 @@ id roboshop
 
 if [ $? -ne 0 ]
 then 
-    useradd roboshop $LOGFILE
-    VALIDATE $? "roboshop user added"
+    useradd roboshop
+    VALIDATE $? "roboshop user creation"
 else
-    echo -e "roboshop user already exist $Y SKIPPING $N"
+    echo -e "roboshop user already exist $Y SKIPPING $N" &>>$LOGFILE
 fi
 
 mkdir -p /app
