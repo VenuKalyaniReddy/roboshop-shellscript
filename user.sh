@@ -8,7 +8,7 @@ Y="\e[33m"
 N="\e[0m"
 MONGODB_HOST=mongodb.aidevops.website
 
-TIMESTAMP= $(date +%F-%H-%M-%S)
+TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
 echo "script started executing at $TIMESTAMP"&>> $LOGFILE
