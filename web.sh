@@ -28,12 +28,12 @@ else
     echo -e "You are root user"
 fi
 
-dnf install nginx -y
+dnf install nginx -y &>>$LOGFILE
 VALIDATE $? "Install nginx"
 
-systemctl enable nginx
+systemctl enable nginx &>>$LOGFILE
 VALIDATE $? "enable nginx"
 
-systemctl start nginx
+systemctl start nginx &>>$LOGFILE
 VALIDATE $? "start nginx"
 
