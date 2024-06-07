@@ -16,7 +16,7 @@ then
     echo -e "$2....$R FAILED $N"
     exir 1
 else
-    echo -e "$@.....$G SUCESS $N"
+    echo -e "$2.....$G SUCESS $N"
 fi
 }
 
