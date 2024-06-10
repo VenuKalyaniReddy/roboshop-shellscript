@@ -34,15 +34,15 @@ else
     echo "You are root user"
 fi
 
-dnf module disable mysql -y
+dnf module disable mysql -y &>> $LOGFILE
 VALIDATE $? "disable the current mysql"
 
-dnf install mysql-community-server -y
+dnf install mysql-community-server -y &>> $LOGFILE
 VALIDATE $? "Install mysql community server"
 
-systemctl enable mysqld
+systemctl enable mysqld &>> $LOGFILE
 VALIDATE $? "Enable mysql"
 
-systemctl start mysqld
+systemctl start mysqld &>> $LOGFILE
 VALIDATE $? "validate mysql"
 
