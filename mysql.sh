@@ -34,7 +34,7 @@ else
     echo "You are root user"
 fi
 
-dnf module disable mysql -y &>> $LOGFILE
+dnf module disable mysql -y 
 VALIDATE $? "disable the current mysql"
 
 dnf install mysql-community-server -y &>> $LOGFILE
