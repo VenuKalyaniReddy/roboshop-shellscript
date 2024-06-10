@@ -34,8 +34,11 @@ else
     echo "You are root user"
 fi
 
-dnf module disable mysql -y 
+dnf module disable mysql -y &>> $LOGFILE
 VALIDATE $? "disable the current mysql"
+
+cp /home/centos/roboshop-shellscript/mysql.repo  /etc/yum.repos.d/mysql.repo
+VALIDATE $? "Copying mysql.repo file"
 
 dnf install mysql-community-server -y &>> $LOGFILE
 VALIDATE $? "Install mysql community server"
