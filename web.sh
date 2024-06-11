@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ID=$(id -u)
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -31,7 +32,7 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
-dnf install nginx -y &>> $LOGFILE
+dnf install nginx.service -y &>> $LOGFILE
  
 VALIDATE $? "Installing nginx"
 
