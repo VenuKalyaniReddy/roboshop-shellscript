@@ -1,7 +1,7 @@
 #!/bin/bash
 
-AMI=ami-0b4f379183e5706b9#this keeps on changing
-SG_ID=sg-0673d44a67505798d #replace with your SG ID
+AMI="ami-0b4f379183e5706b9" #this keeps on changing
+SG_ID="sg-0673d44a67505798d" #replace with your SG ID
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 ZONE_ID=Z0321255HE9OPZ7QKB2P # replace your zone ID
 DOMAIN_NAME="aidevops.website"
